@@ -14,6 +14,7 @@ Le contrôleur MIDI permet de jouer des notes recues par le cable USB,
   - utiliser un module  wifi ou bluetooth pour la communication midi => utiliser un eps32 et adapter le midiHandler pour fonctionner en sans fil
   - utiliser une prise midi classique => code a adapter 
   - ajouter un systeme de Led activé pendant les notes actives
+  - utiliser des dissipateur thermique (support solenoides avec plaque alu) 
   - utiliser un decoupage PWM pour reduire l'intensité de frappe des solenoides et reduire la surchauffe
   - ajouter un systeme de mesure de temperature et de ventilation 
 
