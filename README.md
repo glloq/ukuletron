@@ -15,7 +15,7 @@ Le contrôleur MIDI permet de jouer des notes recues par le cable USB,
   - utiliser une prise midi classique => code a adapter 
   - ajouter un systeme de Led activé pendant les notes actives
   - utiliser des dissipateur thermique (support solenoides avec plaque alu) 
-  - utiliser un decoupage PWM pour reduire l'intensité de frappe des solenoides et reduire la surchauffe
+  - utiliser un decoupage PWM pour reduire l'intensité de frappe des solenoides et reduire la surchauffe avce des pca9685
   - ajouter un systeme de mesure de temperature et de ventilation 
 
 ## schemas de principe 
@@ -34,9 +34,16 @@ l'idée est d'utiliser des tiges en metal qui serons actionné par les solenoide
 > il est possible de changer cet arrangement en adaptant le fichier settings.h a votre cas d'utilisation
 
 ### Systeme de grattage
+> [!NOTE]
+> ca systeme amene des soucis de synchro entre les doigts et le grattage, j'ai essayé d'ajouter un buffer fifo pour la synchro maiss ca augmente le temps de réactivité a 0.2s
 
 Pour des raions de simplicité nous tiliserons un servomoteur par corde pour alterner le grattage de la corde 
 <img src="https://github.com/glloq/Orchestrion_ukulele/blob/main/img/grattage%20partsd.png" alt="Your image title" width=40% height=40%/>
+
+
+--------
+Je vais utiliser deux solenoides opposé par corde pour le systeme de grattage afin de limiter les problemes de synchro frette et grattage avec le solenoide et le servo 
+
 
 il faut garder un design propre, il faudra donc cacher les mecanismes de grattage derriere le corps du ukulele ou une planche de bois sur les cotés.
 
@@ -55,6 +62,7 @@ il faut garder un design propre, il faudra donc cacher les mecanismes de grattag
   
 > [!WARNING]
 > eviter des solenoides avec un trop gros amperage pour limiter la chauffe.
+> il serait plus logique d'utiliser des pca 9685 avec des mofset et diode de roue libre abadptée pour reduire le voltage du solenoide actif après le temps d'activation ?? 
 
 > [!TIP]
 > des solenoides de 7N fonctionent sur la plupart des frettes mais il faudra probablement prevoir un peut plus elevé pour la corde la plus epaisse sur la premiere frette !
